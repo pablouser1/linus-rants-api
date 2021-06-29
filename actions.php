@@ -8,7 +8,7 @@ class Rants {
         } else {
             $this->csv = array_map(function ($v) {
                 return str_getcsv($v, "\t");
-            }, file('rants.tsv'));
+            }, file(__DIR__.'/data/rants.tsv'));
 
             // Add variable to cache
             apcu_add('rants', $this->csv);
