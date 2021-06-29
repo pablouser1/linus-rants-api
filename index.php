@@ -18,13 +18,13 @@ $router->all('/', function () use ($rants) {
 
 $router->get('/random', function () use ($rants) {
     $random = $rants->random();
-    Helpers::buildResponse($random);
+    Helpers::showOne($random);
 });
 
 $router->get('/(\d+)', function ($id) use ($rants) {
     $one = $rants->one($id);
     if ($one) {
-        Helpers::buildResponse($one);
+        Helpers::showOne($one);
     }
     else {
         Helpers::showError("Rant doesn't exist", 404);

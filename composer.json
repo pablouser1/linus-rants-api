@@ -1,4 +1,7 @@
 {
+    "name": "pablouser1/linus-rants-api",
+    "version": "1.0.1",
+    "license": "GPL-3.0-or-later",
     "require": {
         "bramus/router": "^1.5"
     }

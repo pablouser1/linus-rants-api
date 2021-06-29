@@ -18,7 +18,8 @@ class Helpers {
         }
         return $type;
     }
-    static public function buildResponse($data) {
+    
+    static public function showOne($data) {
         $rant = $data["rant"];
         $id = $data["id"];
         $response = [
