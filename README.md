@@ -2,7 +2,7 @@
 Get Linus' rants using an API.
 
 # Installation
-This app requieres at least PHP7 and optionally APCu for storing in cache the file with the rants.
+This app requieres at least PHP7 and APCu for storing in cache the file with the rants.
 
 You also need to config the rewrite, this config may change depending on your web server. Apache users already have .htaccess ready
 

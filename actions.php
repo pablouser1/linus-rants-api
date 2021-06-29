@@ -3,7 +3,7 @@ class Rants {
     private $csv;
     function __construct() {
         // Get rants from cache or file
-        if (apcu_enabled() && apcu_exists('rants')) {
+        if (apcu_exists('rants')) {
             $this->csv = apcu_fetch('rants');
         } else {
             $this->csv = array_map(function ($v) {
