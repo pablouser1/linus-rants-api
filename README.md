@@ -1,5 +1,5 @@
 # Linus rants
-Get Linus' rants as a service using an API.
+Get Linus' rants using an API.
 
 # Installation
 This app requieres at least PHP7 and optionally APCu for storing in cache the file with the rants.
