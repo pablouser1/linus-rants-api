@@ -13,7 +13,7 @@ $router = new \Bramus\Router\Router();
 
 $router->all('/', function () use ($rants) {
     $all = $rants->all();
-    Helpers::showAll($all);
+    Helpers::sendResponse($all);
 });
 
 $router->get('/random', function () use ($rants) {

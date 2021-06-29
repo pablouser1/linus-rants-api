@@ -24,22 +24,14 @@ class Helpers {
         $id = $data["id"];
         $response = [
             "id" => $id,
-            "hate" => $rant[0],
+            "hate" => (double) $rant[0],
             "url" => $rant[1],
             "type" => self::rantType($rant[2]),
             "date" => $rant[3],
-            "timestamp" => $rant[4],
+            "timestamp" => (double) $rant[4],
             "message" => $rant[5]
         ];
-
-        // Send response as json
-        header('Content-Type: application/json');
-        echo json_encode($response);
-    }
-
-    static public function showAll($rants) {
-        header('Content-Type: application/json');
-        echo json_encode($rants);
+        self::sendResponse($response);
     }
 
     static public function showError(string $message, int $code) {
@@ -48,6 +40,10 @@ class Helpers {
             "message" => $message
         ];
         http_response_code($code);
+        self::sendResponse($response);
+    }
+
+    static public function sendResponse(array $response) {
         header('Content-Type: application/json');
         echo json_encode($response);
     }
