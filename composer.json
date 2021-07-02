@@ -3,6 +3,7 @@
     "version": "1.0.4",
     "license": "GPL-3.0-or-later",
     "require": {
-        "bramus/router": "^1.5"
+        "bramus/router": "^1.5",
+        "ext-apcu": "*"
     }
 }
