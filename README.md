@@ -20,3 +20,6 @@ Get a random rant
 
 ### /1,2,3,4...
 Get a rant by id
+
+# Credits
+Linus' rants collection taken from [here](https://data.world/jboutros/linus-rants)
