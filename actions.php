@@ -38,14 +38,8 @@ class Rants {
     public function sort($mode) {
         $result = false;
         $rants = [];
-        switch ($mode) {
-            case "hate":
-                $result = $this->db->query("SELECT * FROM rants ORDER BY hate DESC");
-                break;
-            case "timestamp":
-                $result = $this->db->query("SELECT * FROM rants ORDER BY `timestamp` DESC");
-                break;
-        }
+
+        $result = $this->db->query("SELECT * FROM rants ORDER BY $mode DESC");
 
         if ($result) {
             while ($row = $result->fetchArray(SQLITE3_ASSOC)) {

@@ -34,8 +34,15 @@ $router->get('/(\d+)', function ($id) use ($rants) {
 $router->get('/sort', function () use ($rants) {
     $mode = $_GET["mode"] ? $_GET["mode"] : false;
     if ($mode) {
-        $all = $rants->sort($mode);
-        Helpers::sendResponse($all);
+        switch ($mode) {
+            case "hate":
+            case "timestamp":
+                $all = $rants->sort($mode);
+                Helpers::sendResponse($all);
+                break;
+            default:
+                Helpers::showError("Invalid mode", 400);
+        }
     } else {
         Helpers::showError("Send a mode", 400);
     }
