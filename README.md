@@ -21,5 +21,9 @@ Get a random rant
 ### /1,2,3,4...
 Get a rant by id
 
+### /sort
+Query: ?mode=hate|timestamp
+Sort rants by hate or timestamp
+
 # Credits
 Linus' rants collection taken from [here](https://data.world/jboutros/linus-rants)

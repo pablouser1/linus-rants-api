@@ -26,9 +26,18 @@ $router->get('/(\d+)', function ($id) use ($rants) {
     $one = $rants->one($id);
     if ($one) {
         Helpers::sendResponse($one);
-    }
-    else {
+    } else {
         Helpers::showError("Rant doesn't exist", 404);
+    }
+});
+
+$router->get('/sort', function () use ($rants) {
+    $mode = $_GET["mode"] ? $_GET["mode"] : false;
+    if ($mode) {
+        $all = $rants->sort($mode);
+        Helpers::sendResponse($all);
+    } else {
+        Helpers::showError("Send a mode", 400);
     }
 });
 
