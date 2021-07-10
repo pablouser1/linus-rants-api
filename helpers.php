@@ -1,6 +1,6 @@
 <?php
 class Helpers {
-    static private function rantType($letterType) {
+    static public function rantType(string $letterType) {
         $type = null;
         switch ($letterType) {
             case "C":
@@ -17,21 +17,6 @@ class Helpers {
                 break;
         }
         return $type;
-    }
-    
-    static public function showOne($data) {
-        $rant = $data["rant"];
-        $id = $data["id"];
-        $response = [
-            "id" => $id,
-            "hate" => (double) $rant[0],
-            "url" => $rant[1],
-            "type" => self::rantType($rant[2]),
-            "date" => $rant[3],
-            "timestamp" => (double) $rant[4],
-            "message" => $rant[5]
-        ];
-        self::sendResponse($response);
     }
 
     static public function showError(string $message, int $code) {

@@ -1,38 +1,36 @@
 <?php
-class Rants {
-    private $csv;
-    function __construct() {
-        // Get rants from cache or file
-        if (apcu_exists('rants')) {
-            $this->csv = apcu_fetch('rants');
-        } else {
-            $this->csv = array_map(function ($v) {
-                return str_getcsv($v, "\t");
-            }, file(__DIR__.'/data/rants.tsv'));
+require 'db.php';
 
-            // Add variable to cache
-            apcu_add('rants', $this->csv);
-        }
+class Rants {
+    private $db;
+    function __construct() {
+        $this->db = new DB;
     }
 
     public function all() {
-        return $this->csv;
+        $rants = [];
+        $result = $this->db->query("SELECT * FROM rants");
+        if ($result) {
+            while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+                $row["type"] = Helpers::rantType($row["type"]);
+                array_push($rants, $row);
+            }
+        }
+        return $rants;
     }
 
     public function random() {
-        $num = array_rand($this->csv);
-        return [
-            "id" => $num,
-            "rant" => $this->csv[$num]
-        ];
+        $rant = $this->db->query("SELECT * FROM rants ORDER BY RANDOM() LIMIT 1")->fetchArray(SQLITE3_ASSOC);
+        if ($rant) {
+            $rant["type"] = Helpers::rantType($rant["type"]);
+        }
+        return $rant;
     }
 
     public function one(int $id) {
-        if (array_key_exists($id, $this->csv)) {
-            return [
-                "id" => $id,
-                "rant" => $this->csv[$id]
-            ];
+        $rant = $this->db->statement("SELECT * FROM rants WHERE id=?", 1, $id);
+        if ($rant) {
+            return $rant->fetchArray(SQLITE3_ASSOC);
         }
         return false;
     }
