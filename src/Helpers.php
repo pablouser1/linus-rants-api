@@ -1,7 +1,9 @@
 <?php
+namespace App;
+
 class Helpers {
-    static public function rantType(string $letterType) {
-        $type = null;
+    static public function rantType(string $letterType): string {
+        $type = '';
         switch ($letterType) {
             case "C":
                 $type = "Code";

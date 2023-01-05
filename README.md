@@ -2,7 +2,7 @@
 Get Linus' rants using an API.
 
 # Installation
-This app requieres at least PHP7 and APCu for storing in cache the file with the rants.
+This app requieres at least PHP7 and ext-sqlite.
 
 You also need to config the rewrite, this config may change depending on your web server. Apache users already have .htaccess ready
 
@@ -15,15 +15,14 @@ composer install
 ### /
 Get all the rants available
 
+Optional query: ?sort=hate|timestamp
+Sort rants by hate or timestamp
+
 ### /random
 Get a random rant
 
 ### /1,2,3,4...
 Get a rant by id
-
-### /sort
-Query: ?mode=hate|timestamp
-Sort rants by hate or timestamp
 
 # Credits
 Linus' rants collection taken from [here](https://data.world/jboutros/linus-rants)
